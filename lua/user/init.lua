@@ -1,0 +1,12 @@
+require("user.options")
+require("user.bindings")
+require("user.lazy")
+
+require("plugin.colorscheme")
+require("plugin.telescope")
+require("plugin.treesitter")
+require("plugin.neotree")
+require("plugin.mason")
+require("plugin.lualine")
+require("plugin.null-ls")
+require("plugin.autocomplete")
