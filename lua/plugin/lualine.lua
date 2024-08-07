@@ -1,16 +1,20 @@
+local cat = require 'lualine.themes.catppuccin'
+
+cat.normal.c.bg = '#1E1E2E'
+
 require('lualine').setup {
   options = {
     icons_enabled = true,
-    theme = 'auto',
+    theme = cat,
     component_separators = { left = '', right = ''},
     section_separators = { left = '', right = ''},
     disabled_filetypes = {
-      statusline = {},
+      statusline = { 'packer', 'NVimTree'},
       winbar = {},
     },
     ignore_focus = {},
-    always_divide_middle = true,
-    globalstatus = false,
+    always_divide_middle = false,
+    globalstatus = true,
     refresh = {
       statusline = 1000,
       tabline = 1000,
@@ -18,23 +22,30 @@ require('lualine').setup {
     }
   },
   sections = {
-    lualine_a = {'mode'},
-    lualine_b = {'branch', 'diff', 'diagnostics'},
-    lualine_c = {'filename'},
-    lualine_x = {'encoding', 'fileformat', 'filetype'},
-    lualine_y = {'progress'},
-    lualine_z = {'location'}
-  },
-  inactive_sections = {
     lualine_a = {},
     lualine_b = {},
-    lualine_c = {'filename'},
-    lualine_x = {'location'},
+    lualine_c = {},
+    lualine_x = {},
     lualine_y = {},
     lualine_z = {}
   },
-  tabline = {},
-  winbar = {},
+  inactive_sections = {  },
+  tabline = {
+    lualine_a = {'filename'},
+    lualine_b = {'tabs'},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {'location'},
+    lualine_z = {'mode'}
+  },
+  winbar = {
+    lualine_a = {},
+    lualine_b = {'filetype'},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {},
+    lualine_z = {}
+  },
   inactive_winbar = {},
   extensions = {}
 }

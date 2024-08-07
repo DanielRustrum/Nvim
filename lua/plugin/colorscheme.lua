@@ -1,22 +1,22 @@
 require("catppuccin").setup({
-    flavour = "mocha", 
-    background = { 
+    flavour = "mocha",
+    background = {
         light = "latte",
         dark = "mocha",
     },
-    transparent_background = false, 
-    show_end_of_buffer = false, 
-    term_colors = true, 
+    transparent_background = false,
+    show_end_of_buffer = false,
+    term_colors = true,
     dim_inactive = {
-        enabled = false, 
+        enabled = false,
         shade = "dark",
-        percentage = 0.15, 
+        percentage = 0.15,
     },
     no_italic = false,
     no_bold = false,
-    no_underline = false, 
-    styles = { 
-        comments = { "italic" }, 
+    no_underline = false,
+    styles = {
+        comments = { "italic" },
         conditionals = { "italic" },
         loops = {},
         functions = {},

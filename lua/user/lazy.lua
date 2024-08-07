@@ -19,26 +19,24 @@ local plugins = {
 		"nvim-telescope/telescope.nvim",
 		tag = "0.1.5",
 		"nvim-telescope/telescope-ui-select.nvim",
-		dependencies = { "nvim-lua/plenary.nvim" },
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"plenary",
+		},
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 	},
 	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-	},
-	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "nvim-tree/nvim-web-devicons" },
 	},
-	{ "williamboman/mason.nvim", "williamboman/mason-lspconfig.nvim", "neovim/nvim-lspconfig" },
+	{
+		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"neovim/nvim-lspconfig",
+	},
 	{
 		"nvimtools/none-ls.nvim",
 	},
@@ -51,6 +49,54 @@ local plugins = {
 	{
 		"hrsh7th/cmp-nvim-lsp",
 	},
+	{
+		"m4xshen/smartcolumn.nvim",
+		opts = {},
+	},
+	{
+		"folke/noice.nvim",
+		event = "VeryLazy",
+		opts = {},
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"rcarriga/nvim-notify",
+		},
+	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {
+			keywords = {
+				FIX = {
+					color = "error",
+					icon = " ",
+					alt = { "FIXME", "BUG", "FIXIT", "FIX" },
+				},
+				TODO = { icon = " ", color = "info" },
+				HACK = { icon = " ", color = "warning" },
+				WARN = {
+					icon = " ",
+					color = "warning",
+					alt = { "WARNING", "XXX", "ISSUE" },
+				},
+				PERF = {
+					icon = " ",
+					alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" },
+				},
+				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+				TEST = {
+					icon = "⏲ ",
+					color = "test",
+					alt = { "TESTING", "PASSED", "FAILED" },
+				},
+			},
+		},
+	},
+	{
+		"numToStr/Comment.nvim",
+		opts = {},
+	},
+    { 'prichrd/netrw.nvim', opts = {} }
 }
 local opts = {}
 
