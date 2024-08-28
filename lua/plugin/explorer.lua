@@ -2,6 +2,9 @@ local hidden_is_visible = 0
 
 function FilterNodes(payload)
     print(vim.inspect(payload))
+    -- require('telescope.builtin').find_files({
+    --    cwd = payload.dir
+    -- })
 end
 
 function DeleteNode(payload)
