@@ -62,8 +62,16 @@ local plugins = {
 		opts = opts.plugin.todo_comments,
 	},
 	{ "numToStr/Comment.nvim" },
-	{ "prichrd/netrw.nvim" },
-	{ "mbbill/undotree" },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+		},
+	},
+    { "mbbill/undotree" },
 }
 
 require("lazy").setup(plugins, opts.global)

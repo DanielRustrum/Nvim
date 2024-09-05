@@ -1,66 +1,45 @@
+
 -- The Leader Icon is out of the way now
 vim.g.mapleader = "\\"
+KeyState.state.setDefault("Def")
+KeyState.state.swap("Def")
 
 -- File Navigation
-vim.keymap.set("n", "e", vim.cmd.Ex)
-vim.keymap.set("n", "<S-t>", "<cmd>tabnew %<CR>")
-vim.keymap.set("n", "<leader>t", "<cmd>tabclose<CR>")
-vim.keymap.set("n", "<leader><S-t>", "<cmd>tabonly<CR>")
-vim.keymap.set("n", "<Left-t>", "<cmd>tabprev<CR>")
-vim.keymap.set("n", "<Right-t>", "<cmd>tabnext<CR>")
-vim.keymap.set("n", "t", "<cmd>tabnext<CR>")
+KeyState.keys.toggle("Tabs", "n", "t")
+KeyState.keys.set("Tabs", "n", "n", "<cmd>tabnew %<CR>")
+KeyState.keys.set("Tabs", "n", "<Del>", "<cmd>tabclose<CR>")
+KeyState.keys.set("Tabs", "n", "o", "<cmd>tabonly<CR>")
+KeyState.keys.set("Tabs", "n", "<Left>", "<cmd>tabprev<CR>")
+KeyState.keys.set("Tabs", "n", "<Right>", "<cmd>tabnext<CR>")
 
 -- Line Organization
-vim.keymap.set("v", "<S-Up>", "<cmd>m '<-2<CR>gv=gv")
-vim.keymap.set("v", "<S-Right>", ">gv")
-vim.keymap.set("v", "<S-Down>", "<cmd>m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-/>", "gc")
-vim.keymap.set("v", "<S-Left>", "<gv")
+KeyState.keys.set("Def", "v", "<S-Up>", ":m '<-2<CR>gv=gv", { silent = true })
+KeyState.keys.set("Def", "v", "<S-Down>", ":m '>+1<CR>gv=gv", { silent = true })
+KeyState.keys.set("Def", "v", "<S-Right>", ">gv")
+KeyState.keys.set("Def", "v", "<C-/>", "gc")
+KeyState.keys.set("Def", "v", "<S-Left>", "<gv")
+KeyState.keys.set("Def", "n", "J", "mzJ`z")
 
 -- Command Line Stuff
-vim.keymap.set("n", "!", ":! ")
-vim.keymap.set("n", "?", ":h ")
-
--- I have no Clue... I forgot
-vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
-vim.keymap.set("n", "n", "nzzzv")
-vim.keymap.set("n", "N", "Nzzzv")
+KeyState.keys.set("Def", "n", "?", ":h ")
 
 -- Better Copy, Paste, and Delete
-vim.keymap.set("x", "p", [["_dP]])
-vim.keymap.set({"n", "v"}, "y", [["+y]])
-vim.keymap.set({"n", "v", "i"}, "<C-c>", [["+y]])
-vim.keymap.set("n", "<leader>y", [["+Y]])
-vim.keymap.set({"n", "v"}, "d", [["_d]])
+KeyState.keys.set("Def", "x", "p", [["_dP]])
+KeyState.keys.set("Def", { "n", "v" }, "y", [["+y]])
+KeyState.keys.set("Def", { "n", "v", "i" }, "<C-c>", [["+y]])
+KeyState.keys.set("Def", "n", "<leader>y", [["+Y]])
+KeyState.keys.set("Def", { "n", "v" }, "d", [["_d]])
 
 -- Q is exit
-vim.keymap.set("n", "Q", "<nop>")
-
--- No CLue Again
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-
--- WTF?
-vim.keymap.set(
-    "n",
-    "<leader>s",
-    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]]
-)
+KeyState.keys.set("Def", "n", "Q", "<nop>")
 
 -- Make File Executable
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
+KeyState.keys.set("Def", "n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- Normal File Saving, why are these function IDK....
-vim.keymap.set({"n", "i"}, "<C-s>", function()
-   vim.cmd("w")
-end)
+KeyState.keys.set("Def", { "n", "i" }, "<C-s>", "<cmd>w<CR>")
 
 -- Leave UI Element or Program
-vim.keymap.set({"n", "i"}, "<C-q>", function()
-   vim.cmd("q")
+vim.keymap.set({ "n", "i" }, "<C-q>", function()
+	vim.cmd("q")
 end)
-

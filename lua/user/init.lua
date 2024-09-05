@@ -1,3 +1,7 @@
+require "key-state.api"
+
+require "user.globals"
+require "user.utils"
 require "user.options"
 require "user.bindings"
 require "user.lazy"
@@ -12,8 +16,9 @@ require "plugin.smartcolumn"
 require "plugin.noice"
 require "plugin.lualine"
 require "plugin.comments"
-require "plugin.explorer"
+require "plugin.neotree"
 
+KeyState.state.swap("Def")
 -- Sourcing LuaLine Hack
 -- ISSUE: Winbar background color isn't displaying correctly 
 

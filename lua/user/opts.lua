@@ -19,7 +19,11 @@ local opts = {
 					icon = " ",
 					alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" },
 				},
-				NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
+				NOTE = {
+					icon = " ",
+					color = "hint",
+					alt = { "INFO", "SECTION" },
+				},
 				TEST = {
 					icon = "⏲ ",
 					color = "test",
