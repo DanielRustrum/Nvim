@@ -17,7 +17,7 @@ require("neo-tree").setup({
 			mappings = {
 				["h"] = function(state)
 					local node = state.tree:get_node()
-					print(Editor.fn.dump(node))
+					vim.notify(Editor.fn.dump(state))
 				end,
 				["l"] = "hello",
 			},
@@ -84,14 +84,5 @@ vim.keymap.set("n", "e", function()
 	vim.cmd("Neotree dir=./")
 end, {})
 
-vim.api.nvim_create_autocmd("BufWritePre", {
-	group = vim.api.nvim_create_augroup("Swap_On_File", { clear = true }),
-	callback = function(opts)
-		print("Tests: "..vim.bo[opts.buf].filetype)
-		if vim.bo[opts.buf].filetype == 'neo-tree' then
-			KeyState.state.swap("Explorer")
-		else
-			KeyState.state.swap(KeyState.default_state)
-		end
-	end,
-})
+KeyState.state.autoSwap("Explorer", "file", "neo-tree")
+

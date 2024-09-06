@@ -75,15 +75,23 @@ function KeyState.state.default()
 end
 
 function KeyState.state.autoSwap(state, trigger, match)
+	local triggered = false
+	local last_known_state = KeyState.default_state
+
 	if trigger == "file" then
-		vim.api.nvim_create_autocmd("BufWritePre", {
-			group = vim.api.nvim_create_augroup("Swap_On_File", { clear = true }),
+		vim.api.nvim_create_autocmd("BufEnter", {
 			callback = function(opts)
-                print(vim.bo[opts.buf].filetype)
 				if vim.bo[opts.buf].filetype == match then
 					KeyState.state.swap(state)
+					triggered = true
 				else
-					KeyState.state.swap(KeyState.default_state)
+
+					if triggered then
+						triggered = false
+						KeyState.state.swap(last_known_state)
+                    else
+                        last_known_state = KeyState.current_state
+					end
 				end
 			end,
 		})

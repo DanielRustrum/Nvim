@@ -9,9 +9,9 @@ function Editor.fn.dump(table)
 			if type(k) ~= "number" then
 				k = '"' .. k .. '"'
 			end
-			s = s .. "[" .. k .. "] = " .. Editor.fn.dump(v) .. ",\n"
+			s = s .. "[" .. k .. "] = " .. Editor.fn.dump(v) .. ","
 		end
-		return s .. "} \n"
+		return s .. "} "
 	else
 		return tostring(table)
 	end
